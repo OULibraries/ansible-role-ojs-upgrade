@@ -7,12 +7,18 @@
     regexp: >
       ^installed = On$
     replace: "installed = Off"
+  with_subelements:
+   - "{{ ojs_sites }}"
+   - installs
   tags: mark_unsafe
  
 
 - name: Run PHP Upgrade Utility
   shell: "{{sclphp_location}} /srv/journals.shareok.org/sites/{{ item.1.path }}/ojs/tools/upgrade.php upgrade"
-  tags: tools_upgrade
+  with_subelements:
+   - "{{ ojs_sites }}"
+   - installs
+  tags: php_upgrade
 
 - name: Mark the site as installed in config.inc.php
   replace:
@@ -20,4 +26,7 @@
     regexp: >
       ^installed = Off$
     replace: "installed = On"
+  with_subelements:
+   - "{{ ojs_sites }}"
+   - installs
   tags: mark_safe

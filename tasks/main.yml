@@ -16,5 +16,4 @@
 - include: upgrade.yml
   become: true
   tags: ojs_upgrade
-  with_items: "{{ ojs_calculated_paths|default([]) }}" 
 
