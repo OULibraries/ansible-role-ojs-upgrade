@@ -3,7 +3,7 @@
 
 - name: Mark the site as uninstalled in config.inc.php
   replace:
-    dest: "{/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
+    dest: "/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
     regexp: >
       ^installed = On$
     replace: "installed = Off"
