@@ -7,10 +7,12 @@
 - name: Set current version
   set_fact:
    current_version: "{{ ojs_code.stat.lnk_source | basename | regex_replace('ojs-', '') }}"
+  when: ojs_code.stat.lnk_source is defined
    
 - name: Clean current version
   set_fact: 
    current_version: "{{ current_version.split('-') | join('.') }}"
+  when: ojs_code.stat.lnk_source is defined
 
 - name: Download OJS tarball
   get_url:
@@ -58,7 +60,7 @@
         src: "{{ item }}/ojs-{{ ojs_version }}"
         path: "{{ item }}/ojs"
         state: link
-    - name: Copy Themes from previous instatll
+    - name: Copy Themes from previous install
       command: >
         rsync --ignore-existing --recursive "{{ ojs_code.stat.lnk_source }}/plugins/themes/" "{{ item }}/ojs-{{ ojs_version }}/plugins/themes }}"
   when: ojs_code.stat.lnk_source is defined and current_version is version( ojs_version, '<')
