@@ -59,10 +59,8 @@
         path: "{{ item }}/ojs"
         state: link
     - name: Copy Themes from previous instatll
-      synchronize: 
-        src: "{{ ojs_code.stat.lnk_source }}/plugins/themes/"
-        dest: "{{ item }}/ojs-{{ ojs_version }}/plugins/themes }}"
-        rsync_opts: "--ignore-existing"
+      command: >
+        rsync --ignore-existing --recursive "{{ ojs_code.stat.lnk_source }}/plugins/themes/" "{{ item }}/ojs-{{ ojs_version }}/plugins/themes }}"
   when: ojs_code.stat.lnk_source is defined and current_version is version( ojs_version, '<')
 
 
