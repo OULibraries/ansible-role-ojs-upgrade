@@ -10,6 +10,7 @@
   with_subelements:
    - "{{ ojs_sites }}"
    - installs
+  tags: mark_unsafe
  
 
 - name: Run PHP Upgrade Utility
@@ -17,14 +18,15 @@
   with_subelements:
    - "{{ ojs_sites }}"
    - installs
-  tags: snapshot
+  tags: tools_upgrade
 
 - name: Mark the site as installed in config.inc.php
   replace:
-    dest: "{/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
+    dest: "/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
     regexp: >
       ^installed = Off$
     replace: "installed = On"
   with_subelements:
    - "{{ ojs_sites }}"
    - installs
+  tags: mark_safe
