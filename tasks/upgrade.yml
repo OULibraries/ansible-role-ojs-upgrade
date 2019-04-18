@@ -13,7 +13,7 @@
  
 
 - name: Run PHP Upgrade Utility
-  shell: "php /srv/journals.shareok.org/sites/{{ item.1.path }}/ojs/tools/upgrade.php upgrade"
+  shell: "{{sclphp_location}} /srv/journals.shareok.org/sites/{{ item.1.path }}/ojs/tools/upgrade.php upgrade"
   with_subelements:
    - "{{ ojs_sites }}"
    - installs
