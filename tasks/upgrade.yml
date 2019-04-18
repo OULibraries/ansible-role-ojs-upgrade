@@ -20,11 +20,11 @@
   tags: snapshot
 
 - name: Mark the site as installed in config.inc.php
- replace:
-   dest: "{/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
-   regexp: >
-     ^installed = Off$
-   replace: "installed = On"
- with_subelements:
-  - "{{ ojs_sites }}"
-  - installs
+  replace:
+    dest: "{/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
+    regexp: >
+      ^installed = Off$
+    replace: "installed = On"
+  with_subelements:
+   - "{{ ojs_sites }}"
+   - installs
