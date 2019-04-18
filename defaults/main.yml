@@ -3,6 +3,7 @@
 
 # We'll end up fetching
 # {{ ojs_download_url }}{{ ojs_tarball }}
+sclphp_version: "rh-php70"
 ojs_version: "3.1.2"
 ojs_md5sum: "fcb665e19ae25c204c3ddc7efa86d232"
 ojs_download_url: "http://pkp.sfu.ca/ojs/download/"
@@ -14,4 +15,3 @@ ojs_bootstrap_url: "https://github.com/NateWr/bootstrap3/releases/download/1.1/"
 ojs_bootstrap_tarball: "bootstrap3-{{ ojs_bootstrap_version }}.tar.gz"
 
 ojs_parent_dir: "/srv"
-ojs_envelope_sender: "lib-noreply@ou.edu"
