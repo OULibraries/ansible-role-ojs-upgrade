@@ -8,7 +8,11 @@
     - "{{ ojs_sites }}"
     - installs
 
+- include: deploy.yml
+  become: true
+  tags: ojs_deploy
+  with_items: "{{ ojs_calculated_paths|default([]) }}" 
+
 - include: upgrade.yml
   become: true
   tags: ojs_upgrade
-  with_items: "{{ ojs_calculated_paths|default([]) }}" 
