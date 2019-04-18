@@ -1,12 +1,11 @@
-Role Name
+OULibraries.ojs
 =========
 
-A brief description of the role goes here.
+Open Journal Systems for OU Libraries
 
 Requirements
 ------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+No special reqiurements
 
 Role Variables
 --------------
@@ -16,23 +15,38 @@ A description of the settable variables for this role should go here, including 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+
+```
+- src: https://github.com/OULibraries/ansible-role-apache2
+  version: v2018-04-24.0
+  name: OULibraries.nginx
+
+- src: https://github.com/OULibraries/ansible-role-centos7
+  version: v2016-08-24.0
+  name: OULibraries.centos7
+
+- src: https://github.com/OULibraries/ansible-role-mariadb
+  version: v2016-04-08.0
+  name: OULibraries.mariadb
+
+- src: https://github.com/OULibraries/ansible-role-postfix-mta
+  version: master
+  name: OULibraries.postfix-mta
+
+- src: https://github.com/OULibraries/ansible-role-users
+  version: v2016-08-10.0
+  name: OULibraries.users
+```
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
 License
 -------
 
-BSD
+[MIT](https://github.com/OULibraries/ansible-role-ojs/blob/master/LICENSE)
 
 Author Information
 ------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Jason Sherman
+Logan Cox

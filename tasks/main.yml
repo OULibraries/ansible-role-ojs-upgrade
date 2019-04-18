@@ -1,2 +1,14 @@
 ---
-# tasks file for ansible-role-ojs-upgrade
+
+- name: Calculate OJS install paths
+  set_fact:
+    ojs_calculated_paths:
+       "{{ ojs_calculated_paths|default([]) + [ ojs_parent_dir + '/' + item.0.name +'/sites/' + item.1.path] }}"
+  with_subelements:
+    - "{{ ojs_sites }}"
+    - installs
+
+- include: upgrade.yml
+  become: true
+  tags: ojs_upgrade
+  with_items: "{{ ojs_calculated_paths|default([]) }}" 
