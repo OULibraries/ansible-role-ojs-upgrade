@@ -34,4 +34,4 @@
 - name: Restart PHP
   systemd:
     state: restarted
-    name: "{{ sclphp_version }}"-php-fpm
+    name: "{{ sclphp_version }}-php-fpm"
