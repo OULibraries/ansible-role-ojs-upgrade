@@ -30,3 +30,8 @@
    - "{{ ojs_sites }}"
    - installs
   tags: mark_safe
+
+- name: Restart PHP
+  systemd:
+    state: restarted
+    name: "{{ sclphp_version }}"-php-fpm
