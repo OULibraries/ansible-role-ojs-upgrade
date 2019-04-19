@@ -1,0 +1,21 @@
+---
+# Enable Article PDF Full Text Search and Reindex
+
+- name: Mark the site as uninstalled in config.inc.php
+  replace:
+    dest: "/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
+    regexp: >
+      ^; index[application/pdf] = "/usr/bin/pdftotext -enc UTF-8 -nopgbrk %s - | /usr/bin/tr '[:cntrl:]' ' '"
+    replace: "index[application/postscript] = "/usr/bin/ps2ascii %s | /usr/bin/tr '[:cntrl:]' ' '""
+  with_subelements:
+   - "{{ ojs_sites }}"
+   - installs
+  tags: enable_search
+ 
+
+- name: Run PHP Upgrade Utility
+  shell: "{{sclphp_location}} /srv/journals.shareok.org/sites/{{ item.1.path }}/ojs/tools/rebuildSearchIndex.php"
+  with_subelements:
+   - "{{ ojs_sites }}"
+   - installs
+  tags: reindex
