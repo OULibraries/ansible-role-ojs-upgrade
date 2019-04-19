@@ -13,7 +13,15 @@
   tags: ojs_deploy
   with_items: "{{ ojs_calculated_paths|default([]) }}" 
 
+- include: crossref.yml
+  become: true
+  tags: ojs_crossref
+  with_items: "{{ ojs_calculated_paths|default([]) }}"
+
 - include: upgrade.yml
   become: true
   tags: ojs_upgrade
 
+- include: search.yml
+  become: true
+  tags: ojs_search
