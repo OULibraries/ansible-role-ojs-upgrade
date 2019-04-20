@@ -6,7 +6,7 @@
     dest: "/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
     regexp: >
       ^installed = On$
-    replace: "installed = Off"
+    replace: "installed = Off\n"
   with_subelements:
    - "{{ ojs_sites }}"
    - installs
@@ -25,7 +25,7 @@
     dest: "/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
     regexp: >
       ^installed = Off$
-    replace: "installed = On"
+    replace: "installed = On\n"
   with_subelements:
    - "{{ ojs_sites }}"
    - installs

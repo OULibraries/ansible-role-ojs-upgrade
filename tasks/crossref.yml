@@ -8,7 +8,7 @@
 - name: Deploy OJS Bootstrap Theme
   unarchive:
     src: "/tmp/crossref.tar.gz"
-    dest: "{{item}}/ojs-{{ ojs_version }}/plugins"
+    dest: "{{item}}/ojs-{{ ojs_version }}/plugins/generic"
     owner: nginx
     group: nginx
     copy: no

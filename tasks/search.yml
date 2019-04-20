@@ -5,8 +5,8 @@
   replace:
     dest: "/srv/journals.shareok.org/sites/{{ item.1.path }}/etc/config.inc.php"
     regexp: >
-      ^; index[application/pdf] = "/usr/bin/pdftotext -enc UTF-8 -nopgbrk %s - | /usr/bin/tr '[:cntrl:]' ' '"
-    replace: "index[application/pdf] = \"/usr/bin/pdftotext -enc UTF-8 -nopgbrk %s - | /usr/bin/tr '[:cntrl:]' ' '\""
+      ^; index[application/pdf] = "/usr/bin/pdftotext -enc UTF-8 -nopgbrk %s - | /usr/bin/tr '[:cntrl:]' ' '"$
+    replace: "index[application/pdf] = \"/usr/bin/pdftotext -enc UTF-8 -nopgbrk %s - | /usr/bin/tr '[:cntrl:]' ' '\"\n"
   with_subelements:
    - "{{ ojs_sites }}"
    - installs
