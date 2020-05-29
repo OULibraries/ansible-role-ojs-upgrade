@@ -3,11 +3,18 @@
 
 # We'll end up fetching
 # {{ ojs_download_url }}{{ ojs_tarball }}
-sclphp_version: "rh-php70"
+sclphp_version: "rh-php72"
 sclphp_location: "/opt/rh/{{sclphp_version}}/root/usr/bin/php"
-ojs_version: "3.1.2"
+ojs_version: "3.2.0"
 ojs_md5sum: "90c9a9da9025a5a2878c740ce6df3d2c"
 ojs_download_url: "http://pkp.sfu.ca/ojs/download/"
 ojs_tarball: "ojs-{{ ojs_version }}.tar.gz"
+ojs_md5sum: "b9baca4ea156b2142e233be113ea631a"
+ojs_download_url: "http://pkp.sfu.ca/ojs/download/"
+ojs_tarball: "ojs-{{ ojs_version }}.tar.gz"
+ojs_bootstrap_url: "https://github.com/NateWr/bootstrap3/releases/download/3.2.0/"
+ojs_bootstrap_tarball: "bootstrap3-3.2.0.0.tar.gz"
+
+ojs_bootstrap_md5sum: "c3d1efa61915f532745e83efe53c27fc"
 
 ojs_parent_dir: "/srv"
