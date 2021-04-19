@@ -7,13 +7,19 @@
   with_subelements:
     - "{{ ojs_sites }}"
     - installs
+  tags: always 
+
+
+- debug:
+    msg: "{{ ojs_calculated_paths }}"
+  tags: always  
 
 - include: deploy.yml
   become: true
   tags: ojs_deploy
   with_items: "{{ ojs_calculated_paths|default([]) }}" 
 
-- include: crossref.yml
+- include: plugins.yml
   become: true
   tags: ojs_crossref
   with_items: "{{ ojs_calculated_paths|default([]) }}"
@@ -21,7 +27,8 @@
 - include: upgrade.yml
   become: true
   tags: ojs_upgrade
+  with_items: "{{ ojs_calculated_paths|default([]) }}"
 
-- include: search.yml
-  become: true
-  tags: ojs_search
+#- include: search.yml
+#  become: true
+#  tags: ojs_search
